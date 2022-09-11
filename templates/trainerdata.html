@@ -1,0 +1,101 @@
+{% extends "navbar.html" %}
+{% block title %}
+Add Trainer Information
+{% endblock title %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container mt-4">
+<div class="display-4 text-center text-info">Add Trainer Data</div>
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+            {% include "message.html" %}
+            <h4 class="text-center text-success">HI-FI Gym</h4>
+            <div class="card-body bg-light">
+
+                <form action="/addtrainerinfo" method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="tcode" value="{{current_user.tcode}}" placeholder="Enter the Trainer Code" required >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="tname" placeholder="Enter Trainer Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="normal" placeholder="Normal Availabel?"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="premium" placeholder="Premium Available?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="diamond" placeholder="Diamond Available?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="exclusive" placeholder="Exclusive Available?" required>
+                    </div>
+                 
+                    <br>
+                    <button class="btn btn-info" type="submit">Add</button>
+                    
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+
+   
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://source.unsplash.com/600x1000/?gym,trainer" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body bg-dark">
+                  <h5 class="card-title text-center bg-light">Trainer Data</h5>
+                  <div class="card bg-dark" style="width: 28rem;">
+                    <ul class="list-group list-group-flush bg-dark">
+                      <li class="list-group-item">Trainer Code : <b>{{postsdata.tcode}}</b> </li>
+                      <li class="list-group-item">Trainer Name : <b>{{postsdata.tname}}</b></li>
+                      <li class="list-group-item">Normal Available:<b>{{postsdata.normal}}</b>  </li>
+                      <li class="list-group-item">Premium Available: <b>{{postsdata.premium}}</b> </li>
+                      <li class="list-group-item">Diamond Available:<b>{{postsdata.diamond}}</b> </li>
+                      <li class="list-group-item">Exclusive Available: <b>{{postsdata.exclusive}}</b></li>
+                      <li class="list-group-item"><a href="/tedit/{{postsdata.id}}"><i class="fas fa-edit"></i></a> </i>
+                  
+                          <a class="ml-4" confirm('Are you sure to Delete data'); href="/hdelete/{{postsdata.id}}"><i class="fas fa-trash-alt"></i></a>
+                    </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock body %}
